@@ -231,8 +231,8 @@ $assembly3 > $assembly3_racon
 #...........................................................................
 msg_banner "now extracting illumina mitome reads from all reads"
 
-R1_mt=R1_mt.fq
-R2_mt=R2_mt.fq
+R1_mt=R1_mt.fq.gz
+R2_mt=R2_mt.fq.gz
 
 minimap2 -a -x sr $assembly3_racon $R1 $R2 \
 | samtools fastq -1 $R1_mt -2 $R2_mt -F 0x4 -f 0x2 -
@@ -245,8 +245,8 @@ minimap2 -a -x sr $assembly3_racon $R1 $R2 \
 #...........................................................................
 msg_banner "now creating subset of illumina mitome reads"
 
-R1_mt_subset = R1_mt_subset.fq
-R2_mt_subset = R2_mt_subset.fq
+R1_mt_subset = R1_mt_subset.fq.gz
+R2_mt_subset = R2_mt_subset.fq.gz
 
 rasusa -i $R1_mt -i $R2_mt --coverage 300 \
 --genome-size $genome_size -o $R1_mt_subset -o $R2_mt_subset
@@ -254,7 +254,7 @@ rasusa -i $R1_mt -i $R2_mt --coverage 300 \
 #downsample to required coverage, x300
 
 #...........................................................................
-msg_banner "now polishing flye-rcon assembly with illumina"
+msg_banner "now polishing flye-racon assembly with illumina"
 
 #round 1pilon polish
 
